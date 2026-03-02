@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Tiny5&family=Orbitron:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="radars.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="poster-title">
+            <span>Verificación de perfiles digitales</span>
+        </div>
+        <ul class="menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="content">
+
+    <h1>Construcción de perfiles en entornos online mediante OSINT</h1>
+
+    <!-- SVG filtro -->
+    <svg viewBox="0 0 20 20" class="visually-hidden">
+        <defs>
+            <filter id="noiseFilter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.5" seed="0">
+                    <animate attributeName="seed" values="1;3;5;1" dur="0.2s" repeatCount="indefinite"/>
+                </feTurbulence>
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="radars">
+        <div class="radar jamming">
+            <span class="bg-overlay"></span>
+            <header>
+            <h2>Jammimng</h2>
+            </header>
+
+            <div class="kanji">
+            <span aria-labelledby="h2">
+                電波障害
+            </span>
+            </div>
+
+            <div class="gibberish" aria-hidden>
+            <span> - --- ------ -- - -- - ---- - - ------ -- - - -- </span>
+            <span> -- ------- --- - -- ----- - --- - - ------------ </span>
+            <span> --- ------ -- --- ------- --------- -- - - ----- </span>
+            <span> ---- ----- -- - --- ------ - --- ---- - -------- </span>
+            <span> ----- ------- - - --- - ----- -- - --- - ----- - </span>
+            <span> ------ -- - -- - ---- - - ---------- -- - - ---- </span>
+            </div>
+        </div>
+
+        <div class="radar evasion">
+            <span class="bg-overlay"></span>
+            <header class="blink">
+            <h2>Evasion</h2>
+            </header>
+            <div class="flex">
+            <div class="kanji">
+                <span aria-labelledby="h2">
+                回逃
+                </span>
+            </div>
+            <div class="gibberish">
+                <span>---- ----- - ---- -</span>
+                <span>--- --- ------- - -</span>
+                <span>- --- --------- ---</span>
+                <span>-------- -- - ------</span>
+                <span>--- --- ---------- -</span>
+                <span>--- -  -- ------- -</span>
+            </div>
+            </div>
+            <div class="timer">
+            </div>
+        </div>
+        
+        <div class="radar alert">
+            <span class="bg-overlay"></span>
+            <header class="blink">
+            <h2>Alert</h2>
+            </header>
+            <div class="flex">
+            <div class="kanji">
+                <span aria-labelledby="h2">
+                危険
+                </span>
+            </div>
+            <div class="gibberish">
+                <span>---- ----- - ---- -</span>
+                <span>--- --- ------- - -</span>
+                <span>- --- --------- ---</span>
+                <span>-------- -- - ------</span>
+                <span>--- --- ---------- -</span>
+                <span>--- -  -- ------- -</span>
+            </div>
+            </div>
+            <div class="timer">
+            </div>
+        </div>
+    </div>
+
+    <section class="article-content">
+        <h2>Problema y Motivación</h2>
+        <div class="twoColumns">
+            <p>El aumento del fraude en plataformas online exige mecanismos verificables para estimar la legitimidad de perfiles digitales.
+                <br> <br> Las soluciones actuales se basan en heurísticas o modelos opacos de Machine Learning (ML). Se propone un enfoque estructural explicable basado en evidencias <span class="marked">Open Source Intelligence (OSINT).</span>
+            </p>
+            <div class="bar-chart">
+                <h2>Estafas en alquileres vacacionales en España</h2>
+                <div class="bars">
+                    <div class="bar" style="--height: 22%">
+                    <span>2020</span>
+                    <div class="value">400</div>
+                    <div class="tooltip">400 estafas<span class="arrow"></span></div>
+                    </div>
+                    <div class="bar" style="--height: 39%">
+                    <span>2021</span>
+                    <div class="value">700</div>
+                    <div class="tooltip">700 estafas<span class="arrow"></span></div>
+                    </div>
+                    <div class="bar" style="--height: 86%">
+                    <span>2022</span>
+                    <div class="value">1550</div>
+                    <div class="tooltip">1550 estafas<span class="arrow"></span></div>
+                    </div>
+                    <div class="bar" style="--height: 90%">
+                    <span>2023</span>
+                    <div class="value">1617</div>
+                    <div class="tooltip">1617 estafas<span class="arrow"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>Más de 1000 estafas anuales reflejan un problema estructural de verificación digital.</p>
+        <p>
+            Este notable crecimiento de las plataformas de alquiler ha transformado la forma en que los usuarios buscan alojamiento temporal. Sitios como <em class="marked">Airbnb</em>, <em class="marked">Idealista</em> o <em class="marked">Milanuncios</em> ofrecen accesibilidad, variedad y facilidad de uso. Sin embargo, esta comodidad también ha generado entornos adecuados para la proliferación de fraudes digitales.<br><br>
+            Según datos recientes, el número de estafas en este ámbito ha aumentado significativamente en los últimos años. En la gráfica, se puede observar el crecimiento de las estafas en alquileres vacacionales en España entre 2020 y 2023 (ABC España), lo que indica la urgencia de implementar herramientas para mitigar este tipo de fraudes.
+        </p>
+        <br> 
+        <h3>¿Cómo se estima la legitimidad de un perfil?</h3>
+        <p>Este trabajo propone un modelo estructural basado en grafos.</p>
+        <br>
+        <h2>Arquitectura de la propuesta</h2>
+        <!-- aqui va imagen -->
+         <p>El sistema parte de un conjunto mínimo de <span class="marked">atributos semilla</span> (seed attributes), como alias, direcciones de correo electrónico, números de teléfono o dominios web.</p>
+         <p><br> A partir de los atributos iniciales, se realiza una <span class="marked">expansión automatizada</span> mediante técnicas de OSINT para descrubir trazas digitales públicas relacionadas.</p>
+         <p><br> Cada artefacto descubierto (cuentas en redes sociales, infraestructura técnica, registros de brechas, menciones cruzadas, etc.) se considera una evidencias.</p>
+
+        <div class="twoColumns">
+            <h2 class="marked-title">¿Qué se considera <br>una evidencias?</h2>
+            <p>En el contexto de este proyecto, una evidencia es la <span class="marked">unidad mínima de información observable</span> que constituye una traza digital verificable y potencialmente vinculable a una identidad.</p>
+        </div>
+        <p>Las evidencias candidatas se someten a un proceso de <span class="marked">Entity Resolution & Cross-Source Validation</span>, cuyo objetivo es reducir asociaciones erróneas derivadas de homónimos o identificadores ambiguos.</p>
+        <p><br> La validación se realiza mediante análisis </p>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-left">
+        <p>ac4lv0p1 © 2026</p>
+    </div>
+
+    <div class="footer-right">
+        <a href="#" target="_blank">LinkedIn</a>
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" id="contactBtn">Contact with us</a>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #030303;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+    gap: 20px;
+    position: relative;
+}
+
+/* Poster a la izquierda */
+.poster-title {
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+    color: #00FF00;
+    display: inline-block;
+}
+
+/* Glitch / Cray animación */
+.poster-title span {
+    display: inline-block;
+    animation: glitch 2s infinite steps(10);
+}
+
+/* Menú centrado */
+.menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0 auto;
+}
+
+.menu a,
+.footer a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #00FF00;
+    transition: color .3s ease-in-out;
+}
+
+.menu a::before,
+.footer a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #00FF00;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease;
+    z-index: -1;
+}
+
+.menu a:hover::before,
+.footer a:hover::before {
+    transform: scaleX(1);
+}
+
+.menu a:hover,
+.footer a:hover {
+    color: #030303;
+}
+
+@keyframes blink-caret {
+    0%, 49% { border-right: 2px solid #00FF00; }
+    50%, 100% { border-right: 2px solid transparent; }
+}
+
+h1 {
+    text-align: center;
+    display: inline-block;
+    padding-right: 10px;
+    animation: blink-caret .7s steps(1) infinite;
+    margin: 2%;
+}
+
+.twoColumns {
+
+}
+
+.article-content {
+  width: 65%;
+  margin: 2%;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    margin-top: 100px;
+    border-top: 1px solid #00FF00;
+}
+
+.footer-right {
+    display: flex;
+    gap: 25px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-right {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@keyframes glitch {
+  0% { font-weight: 400; text-decoration: none; text-transform: none; font-style: normal; }
+  10% { font-weight: 700; text-decoration: underline; text-transform: uppercase; font-style: italic; }
+  20% { font-weight: 300; text-decoration: line-through; text-transform: lowercase; font-style: normal; }
+  30% { font-weight: 500; text-decoration: none; text-transform: capitalize; font-style: normal; }
+  40% { font-weight: 600; text-decoration: underline; text-transform: uppercase; font-style: italic; }
+  50% { font-weight: 400; text-decoration: none; text-transform: lowercase; font-style: normal; }
+  60% { font-weight: 700; text-decoration: line-through; text-transform: capitalize; font-style: normal; }
+  70% { font-weight: 500; text-decoration: none; text-transform: uppercase; font-style: italic; }
+  80% { font-weight: 300; text-decoration: underline; text-transform: lowercase; font-style: normal; }
+  90% { font-weight: 400; text-decoration: none; text-transform: capitalize; font-style: normal; }
+  100% { font-weight: 600; text-decoration: underline; text-transform: uppercase; font-style: italic; }
+}
+
+.bar-chart {
+    background-color: #030303;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+    padding: 20px;
+    max-width: 600px;
+    border: 2px solid #00FF00;
+}
+
+.bar-chart h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.bars {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 200px;
+    position: relative;
+}
+
+.bar {
+    width: 50px;
+    background-color: #00FF00;
+    height: var(--height);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00 inset;
+    cursor: pointer;
+}
+
+.bar:hover {
+    transform: scaleY(1.1);
+}
+
+.bar span {
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+.bar .value {
+    position: absolute;
+    top: -20px;
+    font-size: 0.8rem;
+    color: #00FF00;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    bottom: 100%; /* encima de la barra */
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: #030303;
+    border: 1px solid #00FF00;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    text-align: center;
+}
+
+.bar:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-20px);
+}
+
+.tooltip .arrow {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #00FF00; 
+}
+
+
+@keyframes blink-caret {
+    0%, 49% { border-right: 2px solid #00FF00; }
+    50%, 100% { border-right: 2px solid transparent; }
+}
+
+.twoColumns {
+    display: flex;
+    gap: 40px; /* espacio entre columnas */
+    align-items: flex-start; /* alinea contenido arriba */
+    margin: 40px 0;
+    flex-wrap: wrap; /* para pantallas pequeñas, que se adapte */
+}
+
+.twoColumns p {
+    flex: 1 1 300px; /* ocupa el espacio disponible, mínimo 300px */
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #00FF00;
+}
+
+.twoColumns p .marked {
+    color: #00FF00;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.twoColumns .bar-chart {
+    flex: 1 1 300px; 
+    max-width: 600px;
+}
+
+@media (max-width: 768px) {
+    .twoColumns {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .twoColumns p,
+    .twoColumns .bar-chart {
+        flex: 1 1 100%;
+    }
+}
+
+.marked {
+  display: inline-block;           
+  background-color: #00FF00;  
+  color: #000 !important;     
+  padding: 0 0.2em;                 
+  margin: 0 -0.1em;                 
+  line-height: 1.2;                          
+  cursor: pointer;                 
+  position: relative;              
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+}
+
+.marked::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.2em;
+  background-color: #00FF00;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.marked:hover::after {
+  transform: scaleX(1);
+}
+
+.marked:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 2px 6px rgba(0,255,0,0.3); 
+}
+
+.marked-title {
+    background-color: #00FF00;
+    width: fit-content;
+    color: #000;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shodow 0.2s ease;
+}
+
+.marked-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.2em;
+  background-color: #00FF00;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.marked-title:hover::after {
+  transform: scaleX(1);
+}
+
+.marked-title:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 2px 6px rgba(0,255,0,0.3); 
+}

@@ -1,0 +1,235 @@
+/* VARIABLES */
+:root {
+  --num-lines: 6;
+  --transition-time: 1000ms;
+  --anim-time: 6000ms;
+
+  --gibbgrad: repeating-linear-gradient(
+    90deg,
+    currentColor 0 3ex,
+    #fff0 0 4ex,
+    currentColor 0 5ex,
+    #fff0 0 6ex,
+    currentColor 0 13ex,
+    #fff0 0 14ex,
+    currentColor 0 16ex
+  );
+}
+
+/* BASE */
+.visually-hidden {
+  position: fixed;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.radars {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.radars span,
+.radars .timer {
+  color: #000;
+}
+
+/* RADAR */
+.radar {
+  position: relative;
+  aspect-ratio: 15/13;
+  border: 1px solid #000;
+  background: var(--primary);
+  width: 200px;
+  padding: 0.2rem 0 0.4rem;
+  container-type: size;
+  display: grid;
+  grid-template-rows: auto 1fr 50px;
+  overflow: hidden;
+}
+
+/* BG OVERLAY */
+.radar .bg-overlay {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: overlay;
+}
+
+.radar .bg-overlay::before,
+.radar .bg-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.radar .bg-overlay::before {
+  filter: url(#noiseFilter);
+}
+
+.radar .bg-overlay::after {
+  background: rgba(255,255,255,0.32);
+  animation: scanlines 7ms linear infinite;
+}
+
+/* HEADER */
+.radar header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  padding-block: 4px;
+  font-family: "Tiny5", monospace;
+}
+
+.radar header.blink {
+  animation: blink 700ms infinite cubic-bezier(0,0.55,0.45,1);
+}
+
+/* TITLE */
+.radar h2 {
+  display: grid;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12cqw;
+  color: var(--primary);
+}
+
+.radar h2::after {
+  content: "";
+  display: block;
+  background: var(--gibbgrad);
+  height: 1ex;
+  width: 100%;
+}
+
+/* KANJI */
+.radar .kanji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "DotGothic16", sans-serif;
+  font-size: 18cqw;
+}
+
+/* FLEX */
+.radar .flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+/* GIBBERISH GRID */
+.radar .gibberish {
+  display: grid;
+  font-family: "VT323", monospace;
+  font-size: 0.2em;
+  text-align: justify;
+  white-space: nowrap;
+  grid-template-areas:
+    "a1"
+    "a2"
+    "a3"
+    "a4"
+    "a5"
+    "a6";
+  grid-template-rows: repeat(6, var(--line-size));
+  animation: fadeLastLine var(--transition-time) infinite linear;
+}
+
+/* Asignación manual */
+.radar .gibberish span:nth-child(1) { grid-area: a1; }
+.radar .gibberish span:nth-child(2) { grid-area: a2; }
+.radar .gibberish span:nth-child(3) { grid-area: a3; }
+.radar .gibberish span:nth-child(4) { grid-area: a4; }
+.radar .gibberish span:nth-child(5) { grid-area: a5; }
+.radar .gibberish span:nth-child(6) { grid-area: a6; }
+
+/* TIMER */
+.radar .timer {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 3px solid #000;
+  border-inline-width: 0;
+  font-family: "Orbitron", monospace;
+  font-size: 20cqw;
+  overflow: hidden;
+}
+.radar .timer::after {
+  animation: countdown 10s steps(10) infinite;
+  text-shadow: 0 0 8px var(--primary);
+}
+
+/* Fondo tenue */
+.radar .timer::before {
+  content: "88.88";
+  position: absolute;
+  opacity: 0.2;
+}
+
+/* Timer animado */
+.radar .timer::after {
+  content: "99.99";
+  animation: countdown 10s steps(100) infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes countdown {
+  0%   { content: "99.99"; }
+  10%  { content: "89.99"; }
+  20%  { content: "79.99"; }
+  30%  { content: "69.99"; }
+  40%  { content: "59.99"; }
+  50%  { content: "49.99"; }
+  60%  { content: "39.99"; }
+  70%  { content: "29.99"; }
+  80%  { content: "19.99"; }
+  90%  { content: "09.99"; }
+  100% { content: "00.00"; }
+}
+
+@keyframes scanlines {
+  from {
+    clip-path: polygon(0 0,100% 0,100% 2px,0 2px);
+  }
+  to {
+    clip-path: polygon(0 calc(100% - 2px),100% calc(100% - 2px),100% 100%,0 100%);
+  }
+}
+
+@keyframes fadeLastLine {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes blink {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes timer {
+  from { opacity: 1; }
+  to { opacity: 0.8; }
+}
+
+/* VARIANTES */
+.jamming {
+  --primary: rgb(2,137,68);
+  --line-size: 8px;
+}
+
+.evasion {
+  --primary: rgb(123,111,18);
+  --line-size: 5px;
+}
+
+.alert {
+  --primary: rgb(189,43,37);
+  --line-size: 5px;
+}
