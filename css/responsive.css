@@ -63,7 +63,7 @@
     }
 
     .future-list li {
-        display: inline;
+        display: block;
     }
 }
 
@@ -115,7 +115,7 @@
     }
 
     .future-list li {
-        display: inline;
+        display: block;
     }
 }
 
