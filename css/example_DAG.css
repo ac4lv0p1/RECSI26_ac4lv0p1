@@ -1,0 +1,120 @@
+.example-graphs {
+    padding: 40px 20px;
+    background-color: #030303;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+}
+
+.graph-container {
+    margin-top: 30px;
+    text-align: center;
+    border: 2px solid #00FF00;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #00FF00 inset, 0 0 20px #00FF00;
+}
+
+.graph {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 20px auto;
+}
+
+/* Nodos */
+.node {
+    fill: #00ff000b;
+    opacity: 0;
+    transform: scale(0);
+    stroke: #00FF00;
+    stroke-width: 1.5;
+    animation: nodeAppear 0.5s forwards;
+}
+
+.poor {
+    stroke-dasharray: 6 6;
+}
+
+.node-root {
+    fill: #00ff00ad;
+    stroke: #00FF00;
+    animation-delay: 0.2s;
+}
+
+.node-secondary:nth-of-type(2) { animation-delay: 0.7s; }
+.node-secondary:nth-of-type(3) { animation-delay: 1.2s; }
+.node-secondary:nth-of-type(4) { animation-delay: 1.7s; }
+
+/* Etiquetas */
+.node-label {
+    fill: #00FF00;
+    font-size: 12px;
+    font-family: "Courier New", monospace;
+    opacity: 0;
+    animation: labelAppear 0.5s forwards;
+}
+
+.node-root + .node-label { animation-delay: 0.2s; }
+.node-secondary + .node-label:nth-of-type(2) { animation-delay: 0.7s; }
+.node-secondary + .node-label:nth-of-type(3) { animation-delay: 1.2s; }
+.node-secondary + .node-label:nth-of-type(4) { animation-delay: 1.7s; }
+
+/* Conectores */
+.link {
+    stroke: #00FF00;
+    stroke-width: 2;
+    opacity: 0;
+    animation: linkAppear 0.5s forwards;
+}
+
+.poor-link  {
+     stroke: #00FF00;
+    stroke-width: 2;
+    stroke-dasharray: 6 6;
+    opacity: 0;
+    animation: linkAppear 0.5s forwards;
+}
+
+.link:nth-of-type(1) { animation-delay: 0.5s; }
+.link:nth-of-type(2) { animation-delay: 1s; }
+.link:nth-of-type(3) { animation-delay: 1.5s; }
+
+.poor-link:nth-of-type(1) { animation-delay: 0.5s; }
+.poor-link:nth-of-type(2) { animation-delay: 1s; }
+.poor-link:nth-of-type(3) { animation-delay: 1.5s; }
+
+/* Animaciones */
+@keyframes nodeAppear {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes labelAppear {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes linkAppear {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Descripción debajo del grafo */
+.graph-description {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #00FF00;
+    font-family: "Courier New", monospace;
+}
+
+/* Animación tipo "glow" similar al resto de elementos */
+.node,
+.node-label,
+.link {
+    filter: drop-shadow(0 0 6px #00FF00) drop-shadow(0 0 10px #00FF00);
+}

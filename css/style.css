@@ -83,17 +83,11 @@ h1 {
     text-align: center;
     display: inline-block;
     padding-right: 10px;
-    animation: blink-caret .7s steps(1) infinite;
     margin: 2%;
 }
 
-.twoColumns {
-
-}
-
 .article-content {
-  width: 65%;
-  margin: 2%;
+  margin: 5%;
 }
 
 .footer {
@@ -333,4 +327,202 @@ h1 {
 .marked-title:hover {
   transform: translateY(-2px); 
   box-shadow: 0 2px 6px rgba(0,255,0,0.3); 
+}
+
+.idea-list, .future-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.idea-list li, .future-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #030303;
+    border: 2px solid #00FF00;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-family: "Courier New", monospace;
+    font-size: 0.95rem;
+    color: #00FF00;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.idea-list li svg, .future-list li svg {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    transition: transform 0.2s ease;
+}
+
+.idea-list li:hover, .future-list li svg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 6px rgba(0,255,0,0.3);
+}
+
+.idea-list li:hover svg, .future-list li:hover svg {
+    transform: scale(1.2);
+}
+
+.flow-container {
+    display: inline;
+    gap: 40px;
+}
+
+/* Diagrama principal */
+.flowchart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.flowchart .block {
+    background-color: #030303;
+    color: #00FF00;
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    min-width: 220px;
+}
+
+.flowchart .block::after {
+    content: "↓";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #00FF00;
+    font-size: 2rem;
+}
+
+.flowchart .block:last-child::after {
+    content: "";
+}
+
+/* Inputs lateral */
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inputs .input-block {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #00FF00;
+    font-weight: bold;
+}
+
+.inputs .input-block svg {
+    width: 20px;
+    height: 20px;
+    fill: #00FF00;
+}
+
+/* OSINT Tools */
+.osint-tools {
+    background-color: rgba(255,255,255,0.1);
+    border: 2px solid #00FF00;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 250px;
+}
+
+.osint-tools h3 {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    color: #00FF00;
+}
+
+.osint-tools .tool {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #00FF00;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+.osint-tools .tool svg {
+    width: 24px;
+    height: 24px;
+    fill: #00FF00;
+}
+
+#cta{
+    margin-top:60px;
+    padding:40px 20px;
+    text-align:center;
+    border:2px solid #00FF00;
+    border-radius:12px;
+    box-shadow:0 0 10px #00FF00 inset,0 0 20px #00FF00;
+}
+
+.cta-container{
+    margin-top:25px;
+}
+
+.cta-button{
+    display:inline-block;
+    padding:14px 28px;
+    border:2px solid #00FF00;
+    color:#00FF00;
+    text-decoration:none;
+    font-family:"Courier New", monospace;
+    font-size:16px;
+    transition:0.3s;
+    box-shadow:0 0 10px #00FF00;
+}
+
+.cta-button:hover{
+    background:#00FF00;
+    color:#030303;
+    box-shadow:0 0 20px #00FF00;
+}
+
+.typing {
+    display: inline; /* Inline para que fluya con el texto y haga wrap */
+    overflow: hidden;
+    white-space: normal; /* permite salto de línea */
+    border-right: 0.15em solid transparent; /* espacio para cursor */
+    animation: typing-effect 4s steps(58, end) forwards; /* steps = número de caracteres */
+    vertical-align: bottom; /* alinea con el texto */
+    position: relative; 
+  }
+  
+  .typing::after {
+    content: "|";
+    display: inline-block;
+    animation: blink 0.8s steps(2, start) infinite;
+    margin-left: 0.1em; /* pequeño espacio */
+    vertical-align: bottom;
+  }
+  
+  /* animación de escritura */
+  @keyframes typing-effect {
+    from { width: 0; }
+    to { width: 100%; } /* se ajusta al ancho del span */
+  }
+  
+  /* parpadeo del cursor */
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+
+.green {
+    border: 1px solid #00FF00;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

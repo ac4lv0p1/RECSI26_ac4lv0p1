@@ -1,0 +1,186 @@
+/* =====================
+   Responsive Design
+   ===================== */
+
+/* ---------------------
+   Mobile (hasta 767px)
+   --------------------- */
+@media screen and (max-width: 767px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    header nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .poster-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .radars {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .twoColumns {
+        flex-direction: column;
+    }
+
+    .flow-container .flowchart {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .graph-container svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .cta-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .future-list li {
+        display: inline;
+    }
+}
+
+/* ---------------------
+   Tablet (768px - 1024px)
+   --------------------- */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    header nav {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .radars {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .twoColumns {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .graph-container svg {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+    }
+
+    .flow-container .flowchart {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .cta-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .future-list li {
+        display: inline;
+    }
+}
+
+/* ---------------------
+   Desktop (1025px en adelante)
+   --------------------- */
+@media screen and (min-width: 1025px) {
+
+    body {
+        font-size: 18px;
+    }
+
+    .content {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    .twoColumns {
+        flex-direction: row;
+        gap: 40px;
+    }
+
+    .radars {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .graph-container svg {
+        max-width: 500px;
+        height: auto;
+    }
+
+    .flow-container {
+        width: 100%;
+        align-items: center;
+    }
+
+    .flow-container .flowchart {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .cta-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #cta {
+        display: flex;      
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20%;
+        margin-right: 20%;
+    }   
+
+    .idea-list {
+        display: inline;
+    }
+
+    .idea-list li {
+        margin-bottom: 10px;
+    }
+
+    .future-list li {
+        width: 100%;
+        display: inline;
+    }
+}

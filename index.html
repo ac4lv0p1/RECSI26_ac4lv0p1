@@ -7,8 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Tiny5&family=Orbitron:wght@400;700&family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="radars.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/radars.css">
+    <link rel="stylesheet" href="css/example_DAG.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -18,27 +20,15 @@
             <span>Verificación de perfiles digitales</span>
         </div>
         <ul class="menu">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="#arquitectura">Arquitectura</a></li>
+            <li><a href="#hipotesis">Hipótesis</a></li>
+            <li><a href="#cta">Aportaciones</a></li>
         </ul>
     </nav>
 </header>
 
 <main class="content">
-
-    <h1>Construcción de perfiles en entornos online mediante OSINT</h1>
-
-    <!-- SVG filtro -->
-    <svg viewBox="0 0 20 20" class="visually-hidden">
-        <defs>
-            <filter id="noiseFilter">
-                <feTurbulence type="fractalNoise" baseFrequency="0.5" seed="0">
-                    <animate attributeName="seed" values="1;3;5;1" dur="0.2s" repeatCount="indefinite"/>
-                </feTurbulence>
-            </filter>
-        </defs>
-    </svg>
+    <h1><span class="typing">Construcción de perfiles en entornos online mediante OSINT</span></h1>
 
     <div class="radars">
         <div class="radar jamming">
@@ -153,32 +143,374 @@
         <h3>¿Cómo se estima la legitimidad de un perfil?</h3>
         <p>Este trabajo propone un modelo estructural basado en grafos.</p>
         <br>
-        <h2>Arquitectura de la propuesta</h2>
-        <!-- aqui va imagen -->
-         <p>El sistema parte de un conjunto mínimo de <span class="marked">atributos semilla</span> (seed attributes), como alias, direcciones de correo electrónico, números de teléfono o dominios web.</p>
-         <p><br> A partir de los atributos iniciales, se realiza una <span class="marked">expansión automatizada</span> mediante técnicas de OSINT para descrubir trazas digitales públicas relacionadas.</p>
-         <p><br> Cada artefacto descubierto (cuentas en redes sociales, infraestructura técnica, registros de brechas, menciones cruzadas, etc.) se considera una evidencias.</p>
+        <hr class="green">
+        <section id="arquitectura">
+            <h2>Arquitectura de la propuesta</h2>
+            <div class="flow-container">
+                <div class="flowchart">
+                    <div class="block">inputs</div>
 
-        <div class="twoColumns">
-            <h2 class="marked-title">¿Qué se considera <br>una evidencias?</h2>
-            <p>En el contexto de este proyecto, una evidencia es la <span class="marked">unidad mínima de información observable</span> que constituye una traza digital verificable y potencialmente vinculable a una identidad.</p>
+                    <div class="block">OSINT Expansion</div>
+                    <div class="block">Evidence Validation</div>
+                    <div class="block">Graph Construction (DAG)</div>
+                    <div class="block">Consistency & Trust Analysis</div>
+                </div>
+            <!--
+                <div style="display: flex; flex-direction: column; gap: 30px;">
+                    <div class="input-block">EMAIL
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0H4m4 0v8m0-8V4m0 0h8M8 4h8"/>
+                        </svg>
+                    </div>
+                    <div class="input-block">ALIAS
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A4.992 4.992 0 0 1 4 12a4.992 4.992 0 0 1 1.121-5.804M12 12a4.992 4.992 0 0 1 5.804-1.121M12 12v9"/>
+                        </svg>
+                    </div>
+                    <div class="input-block">Phone Number
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 8l2-2m0 0L8 2m-4 4v4h4m12 12l-2 2m0 0L16 22m4-4v-4h-4"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="osint-tools">
+                    <h3>OSINT tools</h3>
+                    <div class="tool">SOCIAL MEDIA DISCOVERY
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="tool">REVERSE SEARCH TOOLS
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="tool">DOMAIN INTELLIGENCE
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="tool">METADATA EXTRACTION
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="tool">DATA BREACH RECORDS
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="tool">WEB SCRAPING
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                </div>
+            ---->    
+            </div>
+            <p>El sistema parte de un conjunto mínimo de <span class="marked">atributos semilla</span> (seed attributes), como alias, direcciones de correo electrónico, números de teléfono o dominios web.</p>
+            <p><br> A partir de los atributos iniciales, se realiza una <span class="marked">expansión automatizada</span> mediante técnicas de OSINT para descrubir trazas digitales públicas relacionadas.</p>
+            <p><br> Cada artefacto descubierto (cuentas en redes sociales, infraestructura técnica, registros de brechas, menciones cruzadas, etc.) se considera una evidencias.</p>
+            <p>Las evidencias candidatas se someten a un proceso de <span class="marked">Entity Resolution & Cross-Source Validation</span>, cuyo objetivo es reducir asociaciones erróneas derivadas de homónimos o identificadores ambiguos.</p>
+            <p><br> La validación se realiza mediante análisis de consistencia de atributos compartidos (correo reutilizado, menciones cruzadas, metadatos, coincidencias contextuales, etc ...</p>
+            <br>
+            <p>Posteriormente, las evidencias validades se modelan como nodos dentro de un <span class="marked">Directed Acyclic Graph (DAG).</span><br> Las relaciones verificadas se representan mediante aristas dirigidas con un confidence <span class="marked">Confidence weight</span> asociado, que refleja la fortaleza de la vinculación inferida entre evidencias.</p>
+            <br>
+            <p>El grafo resultante se analiza a partir de propiedades estructurales como profundidad (longest path), densidad, y conectividad.</p>
+            <br>
+            <p>Los pesos de confianza de las aristas contribuyen a estimar la coherencia estructural de la identidad digital, explorando mecanismos de <span class="marked">confidence propagation</span> que refuercen clusters de identidad consistentes.</p>
+            <div class="twoColumns">
+                <h2 class="marked-title">¿Qué se considera <br>una evidencia?</h2>
+                <p>En el contexto de este proyecto, una evidencia es la <span class="marked">unidad mínima de información observable</span> que constituye una traza digital verificable y potencialmente vinculable a una identidad.</p>
+            </div>
+        </section>
+    
+        <hr class="green">
+        
+        <section id="hipotesis">
+            <h2>Hipótesis y marco conceptual</h2> 
+            <p>La premisa central que sustenta esta propuesta es que <i><span class="marked">la calidad de las conexiones</span> prevalece sobre la existencia aislada de evidencias.</i></p>
+            <br><p> En el contexto de identidad digital, una evidencia individual carece de significado suficiente por sí sola: únicamente indica la posible presencia de un atributo asociado a una identidad.</p> <p><br>Una identidad digital no puede establecerse de forma robusta a partir de un único alias, correo electrónico o cuenta aislada, ya que dichos artefactos pueden:</p> 
+            <ul class="idea-list">
+                <li>
+                    <!-- Identificadores similares -->
+                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.213 9.787a3.391 3.391 0 0 0-4.795 0l-3.425 3.426a3.39 3.39 0 0 0 4.795 4.794l.321-.304m-.321-4.49a3.39 3.39 0 0 0 4.795 0l3.424-3.426a3.39 3.39 0 0 0-4.794-4.795l-1.028.961"/>
+                    </svg>
+                    Pertenecer a individuos distintos que comparten identificadores similares (homónimos o reutilización).
+                </li>
+                <li>
+                    <!-- Cuentas temporales -->
+                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M3.223 14C4.132 18.008 7.716 21 12 21c4.971 0 9-4.03 9-9 0-4.971-4.029-9-9-9-3.729 0-6.929 2.268-8.294 5.5M7 9H3V5"/>
+                    </svg>
+                    Corresponder a cuentas temporales, desechables o en desuso.
+                </li>
+                <li>
+                    <!-- Automatización / No humano -->
+                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 2.317a.75.75 0 0 0-1.65 0l-.03.296a5.516 5.516 0 0 0-2.591 1.107l-.26-.153a.75.75 0 1 0-.75 1.299l.243.143a5.504 5.504 0 0 0-1.378 2.594l-.296.03a.75.75 0 0 0 0 1.5l.296.03a5.504 5.504 0 0 0 1.107 2.59l-.153.263a.75.75 0 1 0 1.299.75l.143-.243a5.516 5.516 0 0 0 2.594 1.378l.03.296a.75.75 0 0 0 1.5 0l.03-.296a5.516 5.516 0 0 0 2.594-1.107l.263.153a.75.75 0 1 0 .75-1.299l-.243-.143a5.504 5.504 0 0 0 1.378-2.594l.296-.03a.75.75 0 0 0 0-1.5l-.296-.03a5.504 5.504 0 0 0-1.107-2.59l.153-.263a.75.75 0 1 0-1.299-.75l-.143.243a5.516 5.516 0 0 0-2.594-1.378l-.03-.296ZM10 13a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/>
+                    </svg>
+                    Formar parte de actividades automatizadas o no humanas.
+                </li>
+                <li>
+                    <!-- Ambigüedad / Ruido -->
+                    <svg class="w-6 h-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+                    </svg>
+                    Estar intencionadamente diseñados para generar ambigüedad o ruido.
+                </li>
+            </ul>
+            <p><br>Desde esta perspectiva, la identidad no se define por la existencia de nodos individuales, sino por la <span class="marked">coherencia, consistencia y densidad</span> de sus relaciones verificadas. Es la convergencia de múltiples atributos interrelacionados, validados entre fuentes independientes, lo que permite inferir con mayor probabilidad la existencia de una entidad digital consistente.</p> <p><br>La hipótesis que se pretende evaluar es que un grafo con conexiones densas, coherentes y con pesos de confianza altos genera un patrón estructural significativamente distinto al de agregaciones accidentales de evidencias. En consecuencia, <i style="font-weight: bolder;">la legitimidad de un perfil emerge como una propiedad estructural del grafo y no como una característica intrínseca de una evidencia aislada</i>.</p>
+            <section class="example-graphs">
+                <h2>Ejemplo conceptual:</h2>
+                <h3>visualizando la legitimidad de un perfil digital</h3>
+                <p>Este ejemplo ilustra la hipótesis central: la legitimidad de un perfil digital emerge de la coherencia y consistencia de sus evidencias interconectadas, no de nodos aislados mínimamente relacionados.</p>
+
+                <!-- Perfil A: coherente -->
+                <div class="graph-container">
+                    <h3>Perfil A: coherente</h3>
+                    <svg class="graph" viewBox="0 0 400 300">
+                        <!-- Nodo raíz -->
+                        <circle class="node node-root" cx="200" cy="50" r="20"></circle>
+                        <text x="200" y="20" text-anchor="middle" class="node-label">Alias</text>
+
+                        <!-- Conectores desde alias -->
+                        <line class="link" x1="200" y1="70" x2="110" y2="135"></line>
+                        <line class="link" x1="200" y1="70" x2="200" y2="140"></line>
+                        <line class="poor-link" x1="200" y1="70" x2="295" y2="135"></line>
+                        <line class="link" x1="200" y1="70" x2="70" y2="200"></line>
+                        <line class="link" x1="200" y1="70" x2="145" y2="220"></line>
+                        <line class="poor-link" x1="200" y1="70" x2="260" y2="210"></line>
+                        <line class="link" x1="200" y1="70" x2="330" y2="190"></line>
+                        <line class="link" x1="200" y1="70" x2="350" y2="250"></line>
+
+                        <!-- Interconexiones entre evidencias fuertes -->
+
+                        <!-- Email ↔ LinkedIn -->
+                        <line class="link" x1="110" y1="150" x2="145" y2="230"></line>
+
+                        <!-- Email ↔ Website -->
+                        <line class="link" x1="110" y1="150" x2="70" y2="210"></line>
+
+                        <!-- Website ↔ Domain (débil) -->
+                        <line class="poor-link" x1="70" y1="210" x2="295" y2="145"></line>
+
+                        <!-- Phone ↔ LinkedIn -->
+                        <line class="link" x1="200" y1="150" x2="145" y2="230"></line>
+
+                        <!-- LinkedIn ↔ YouTube -->
+                        <line class="link" x1="145" y1="230" x2="330" y2="200"></line>
+
+                        <!-- YouTube ↔ Website -->
+                        <line class="link" x1="330" y1="200" x2="70" y2="210"></line>
+
+                        <!-- Nodos secundarios -->
+
+                        <!-- Email -->
+                        <circle class="node node-secondary" cx="110" cy="150" r="15"></circle>
+                        <text x="110" y="180" text-anchor="middle" class="node-label">Email</text>
+
+                        <!-- Phone -->
+                        <circle class="node node-secondary" cx="200" cy="150" r="15"></circle>
+                        <text x="200" y="180" text-anchor="middle" class="node-label">Phone</text>
+
+                        <!-- Domain (evidencia débil) -->
+                        <circle class="node node-secondary poor" cx="295" cy="145" r="15"></circle>
+                        <text x="295" y="175" text-anchor="middle" class="node-label">Domain</text>
+
+                        <!-- Website -->
+                        <circle class="node node-secondary" cx="70" cy="210" r="15"></circle>
+                        <text x="70" y="240" text-anchor="middle" class="node-label">Website</text>
+
+                        <!-- LinkedIn -->
+                        <circle class="node node-secondary" cx="145" cy="230" r="15"></circle>
+                        <text x="145" y="260" text-anchor="middle" class="node-label">LinkedIn</text>
+
+                        <!-- Instagram (débil) -->
+                        <circle class="node node-secondary poor" cx="260" cy="220" r="15"></circle>
+                        <text x="260" y="250" text-anchor="middle" class="node-label">Instagram</text>
+
+                        <!-- YouTube -->
+                        <circle class="node node-secondary" cx="330" cy="200" r="15"></circle>
+                        <text x="330" y="230" text-anchor="middle" class="node-label">YouTube</text>
+
+                        <!-- Other evidence -->
+                        <circle class="node node-secondary" cx="350" cy="260" r="15"></circle>
+                        <text x="350" y="290" text-anchor="middle" class="node-label">Other</text>
+                    </svg>
+                </div>
+                <p class="graph-description">Este ejemplo muestra un perfil digital construido a partir de un atributo inicial (<span class="marked">alias</span>) del cual se derivan múltiples evidencias obtenidas de fuentes abiertas. Cada nodo representa un atributo asociado (correo electrónico, teléfono, dominio o perfiles en plataformas públicas), mientras que las aristas indican relaciones observables entre ellos. En el grafo se puede observar que varias evidencias no solo se conectan con el nodo inicial, sino también entre sí, formando una estructura consistente que refuerza la trazabilidad de la información. Algunas relaciones pueden presentar menor grado de confiabilidad, representadas mediante enlaces discontinuos, pero cuando la mayoría de evidencias mantienen conexiones coherentes, el grafo refleja un <span class="marked">alto nivel de consistencia estructural</span>. Este comportamiento respalda la hipótesis del proyecto: "<i>la legitimidad de una identidad digital emerge de la coherencia entre múltiples evidencias interrelacionadas con alto nivel de conectividad, y no de la existencia de un único dato aislado"</i>.</p>
+                <!-- Perfil B: difuso -->
+                <div class="graph-container">
+                <h3>Perfil B: difuso</h3>
+
+                <svg class="graph" viewBox="0 0 420 320">
+
+                <!-- Raíz 1 -->
+                <circle class="node node-root" cx="140" cy="50" r="20"></circle>
+                <text x="140" y="20" text-anchor="middle" class="node-label">Alias</text>
+
+                <!-- Raíz 2 -->
+                <circle class="node node-root" cx="280" cy="50" r="20"></circle>
+                <text x="280" y="20" text-anchor="middle" class="node-label">Email</text>
+
+
+                <!-- Conexión débil entre raíces -->
+                <line class="poor-link" x1="160" y1="50" x2="260" y2="50"></line>
+
+
+                <!-- Conexiones desde Alias -->
+                <line class="link" x1="140" y1="70" x2="80" y2="140"></line>
+                <line class="poor-link" x1="140" y1="70" x2="150" y2="160"></line>
+                <line class="poor-link" x1="140" y1="70" x2="50" y2="210"></line>
+
+
+                <!-- Conexiones desde Email -->
+                <line class="link" x1="280" y1="70" x2="330" y2="140"></line>
+                <line class="poor-link" x1="280" y1="70" x2="260" y2="150"></line>
+                <line class="poor-link" x1="280" y1="70" x2="360" y2="210"></line>
+                <line class="link" x1="280" y1="70" x2="360" y2="210"></line>
+                <line class="link" x1="280" y1="70" x2="80" y2="150"></line>
+                <line class="link" x1="150" y1="160" x2="80" y2="150"></line>
+
+                <!-- Conexiones difusas entre evidencias -->
+                <line class="poor-link" x1="150" y1="160" x2="260" y2="150"></line>
+                <line class="poor-link" x1="80" y1="140" x2="50" y2="210"></line>
+                <line class="poor-link" x1="330" y1="140" x2="360" y2="210"></line>
+                <line class="poor-link" x1="260" y1="150" x2="300" y2="230"></line>
+                
+
+
+                <!-- Evidencias cluster A -->
+
+                <circle class="node node-secondary" cx="80" cy="150" r="15"></circle>
+                <text x="80" y="180" text-anchor="middle" class="node-label">Email</text>
+
+                <circle class="node node-secondary poor" cx="150" cy="160" r="15"></circle>
+                <text x="150" y="200" text-anchor="middle" class="node-label">Forum</text>
+
+                <circle class="node node-secondary poor" cx="50" cy="210" r="15"></circle>
+                <text x="50" y="240" text-anchor="middle" class="node-label">Blog</text>
+
+
+                <!-- Evidencias cluster B -->
+
+                <circle class="node node-secondary" cx="330" cy="150" r="15"></circle>
+                <text x="330" y="180" text-anchor="middle" class="node-label">LinkedIn</text>
+
+                <circle class="node node-secondary poor" cx="260" cy="150" r="15"></circle>
+                <text x="260" y="180" text-anchor="middle" class="node-label">Instagram</text>
+
+                <circle class="node node-secondary poor" cx="360" cy="210" r="15"></circle>
+                <text x="360" y="240" text-anchor="middle" class="node-label">TikTok</text>
+
+
+                <!-- Evidencias difusas adicionales -->
+
+                <circle class="node node-secondary poor" cx="300" cy="230" r="15"></circle>
+                <text x="300" y="260" text-anchor="middle" class="node-label">Unknown</text>
+
+                </svg>
+                </div>
+                <p class="graph-description">
+                    En este otro ejemplo el grafo muestra múltiples evidencias distribuidas en diferentes subconjuntos que se relacionan de forma débil o parcial. La presencia de dos nodos iniciales genera estructuras divergentes, donde algunas evidencias solo se conectan mediante relaciones poco confiables o aparecen aisladas dentro del grafo. Este patrón estructural fragmentado refleja una baja coherencia entre las evidencias disponibles, lo que dificulta establecer una identidad digital consistente y sugiere un perfil potencialmente ambiguo o poco fiable.
+                </p>
+            </section>
+        </section>
+
+        <hr class="green">
+        <h2>Consideraciones Éticas y Privacidad</h2>
+        <p class="graph-description">
+            El uso de fuentes abiertas para verificación digital requiere <span class="marked">responsabilidad ética</span> y respeto por la privacidad. 
+            Aunque los datos son públicos, combinarlos y analizarlos puede implicar tratamiento de <span class="marked">datos personales</span> según el <span class="marked">RGPD</span> y la <span class="marked">LOPDGDD</span>.
+        </p>
+        <p class="graph-description">
+            En este proyecto se aplican principios de <span class="marked">minimización</span>, <span class="marked">anonimización</span> y uso limitado al contexto de investigación, 
+            evitando la identificación directa de personas y restringiendo el acceso a información sensible.
+            Se emplea un <span class="marked">filtro previo</span> inspirado en el <span class="marked">Legacy Funnel System</span> para controlar datos potencialmente protegidos antes de su procesamiento.
+        </p>
+        <p class="graph-description">
+            La reutilización de fuentes públicas respeta derechos de <span class="marked">propiedad intelectual</span> y condiciones de uso, reforzando la necesidad de un enfoque <span class="marked">responsable y proporcional</span> al aplicar técnicas OSINT.
+        </p>
+        <hr class="green">
+        <h2>Trabajo Futuro y Mejoras</h2>
+        <p class="graph-description">
+            La infraestructura propuesta permite correlacionar evidencias OSINT mediante grafos ponderados, generando perfiles digitales estructurados que facilitan la <span class="marked">verificación explicable</span> en entornos abiertos.
+        </p>
+        <ul class="future-list">
+            <li>
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="5" cy="5" r="2"/>
+                    <circle cx="19" cy="5" r="2"/>
+                    <circle cx="12" cy="12" r="2"/>
+                    <circle cx="5" cy="19" r="2"/>
+                    <circle cx="19" cy="19" r="2"/>
+                    <line x1="7" y1="6" x2="11" y2="11"/>
+                    <line x1="17" y1="6" x2="13" y2="11"/>
+                    <line x1="7" y1="18" x2="11" y2="13"/>
+                    <line x1="17" y1="18" x2="13" y2="13"/>
+                </svg>
+                Ampliar el sistema con más atributos iniciales para aumentar la cobertura y profundidad del grafo.
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="6" cy="6" r="2"/>
+                    <circle cx="18" cy="6" r="2"/>
+                    <circle cx="6" cy="18" r="2"/>
+                    <circle cx="18" cy="18" r="2"/>
+                    <circle cx="12" cy="12" r="2"/>
+                    <line x1="8" y1="6" x2="10" y2="11"/>
+                    <line x1="16" y1="6" x2="14" y2="11"/>
+                    <line x1="8" y1="18" x2="10" y2="13"/>
+                    <line x1="16" y1="18" x2="14" y2="13"/>
+                </svg>
+                Integrar <span class="marked">técnicas de aprendizaje automático</span> para analizar patrones y detectar comportamientos consistentes o anómalos.
+            </li>
+            <li>
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="10" width="6" height="6"/>
+                    <rect x="15" y="3" width="6" height="6"/>
+                    <rect x="15" y="15" width="6" height="6"/>
+                    <line x1="9" y1="13" x2="15" y2="6"/>
+                    <line x1="9" y1="13" x2="15" y2="18"/>
+                </svg>
+                Explorar mecanismos basados en <span class="marked">blockchain</span> para gestionar identidades y evidencias de forma inmutable y completamente anónima, donde solo el algoritmo conoce la identidad real.
+            </li>
+        </ul>
+        <p class="graph-description">
+            Estas mejoras reforzarán la <span class="marked">solidez</span> y aplicabilidad del sistema en entornos de confianza digital, incluyendo escenarios prácticos de seguridad y auditoría de datos reales.
+        </p>
+    </section>
+    <section id="cta">
+        <h2 class="marked-title">Colabora con el proyecto!!!</h2>
+
+        <p class="graph-description">
+            Este proyecto se encuentra actualmente en fase de investigación y desarrollo, 
+            explorando nuevas aproximaciones para la 
+            <span class="marked">verificación de identidades digitales</span> mediante evidencias OSINT</span>.
+        </p>
+
+        <p class="graph-description">
+            Se invita a investigadores, analistas OSINT y profesionales de ciberseguridad 
+            a compartir ideas, herramientas, datasets o propuestas de colaboración 
+            que puedan contribuir a la evolución del sistema.
+        </p>
+
+        <p class="graph-description">
+            Si deseas aportar información o establecer contacto académico, 
+            puedes hacerlo a través del siguiente formulario.
+        </p>
+
+        <div class="cta-container">
+            <a href="https://forms.gle/zbV2cSHRuJhKyj7e7" target="_blank" class="cta-button">
+            Enviar propuesta o contribución
+            </a>
         </div>
-        <p>Las evidencias candidatas se someten a un proceso de <span class="marked">Entity Resolution & Cross-Source Validation</span>, cuyo objetivo es reducir asociaciones erróneas derivadas de homónimos o identificadores ambiguos.</p>
-        <p><br> La validación se realiza mediante análisis </p>
 
+        <p class="graph-description" style="font-size:12px;opacity:0.8">
+            Las contribuciones recibidas serán evaluadas exclusivamente con fines de investigación.
+        </p>
     </section>
 
 </main>
-
 <footer class="footer">
     <div class="footer-left">
         <p>ac4lv0p1 © 2026</p>
     </div>
 
     <div class="footer-right">
-        <a href="#" target="_blank">LinkedIn</a>
-        <a href="#" target="_blank">GitHub</a>
-        <a href="#" id="contactBtn">Contact with us</a>
+        <a href="https://es.linkedin.com/in/antonio-c-p-489315279?trk=people-guest_people_search-card" target="_blank">LinkedIn</a>
+        <a href="https://github.com/ac4lv0p1" target="_blank">GitHub</a>
+        <a href="https://forms.gle/zbV2cSHRuJhKyj7e7" id="contactBtn">Contact with us</a>
     </div>
 </footer>
 
